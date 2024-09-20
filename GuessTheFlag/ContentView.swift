@@ -10,29 +10,17 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color.blue
+            VStack(spacing: 0) {
+                Color.red
+                Color.blue
+            }
+            Text("Your Content")
+                .foregroundStyle(.secondary)
+                .padding(60)
+                .background(.ultraThinMaterial)
+        }
                 .ignoresSafeArea()
-            Text("Blue")
-       
-        }
-
         
-        
-        ZStack {
-            Color.yellow
-
-         Text("Your content")
-         
-            
-        }
-        
-
-        ZStack {
-            Color.green
-
-            Text("Green")
-        }
-        .ignoresSafeArea()
     }
 }
 
