@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showingAlert = false
+    
     var body: some View {
         //        RadialGradient(colors: [.purple, .black], center: .center, startRadius: 20, endRadius: 200)
         
@@ -19,21 +22,21 @@ struct ContentView: View {
         //            .background(.red.gradient)
         //
         
-        Button {
-            print("Button was tapped")
-        }label: {
-            Label("Edit", systemImage: "pencil")
-                .padding()
-                .foregroundColor(.white)
-                .background(.gray)
+        Button("Show Alert", role: .destructive) {
+            showingAlert = true
+                
         }
-            
-  
         
+        .padding()
+        .alert("Important message!", isPresented: $showingAlert) {
+            Button("Delete", role: .destructive) {}
+            Button("Cancel", role: .cancel) {}
+        } message: {
+        Text("Please read this.")
+        }
+          
     }
-    func executDelete() {
-        print("Now Deleting")
-    }
+
     
 }
 
