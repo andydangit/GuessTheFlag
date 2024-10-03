@@ -32,14 +32,12 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Guess the Flag ")
-                    .font(.largeTitle.bold())
-                    .foregroundStyle(.white)
+                    .titleStyle(color: .white)
                 
                 VStack(spacing: 15) {
                     VStack {
                         Text("Tap the flag of")
-                            .foregroundStyle(.secondary)
-                            .font(.subheadline.weight(.heavy))
+                            .titleStyle(color: .indigo)
                         
                         Text(countries[correctAnswer])
                             .foregroundStyle(.primary)
@@ -125,6 +123,21 @@ struct FlagImage: View {
         Image(name)
             .clipShape(Capsule())
             .shadow(radius: 5)
+    }
+}
+
+struct TitleStyle: ViewModifier {
+    var color: Color
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle.weight(.bold))
+            .foregroundColor(color)
+    }
+}
+
+extension View {
+    func titleStyle(color: Color = .blue) -> some View {
+        self.modifier(TitleStyle(color: color))
     }
 }
 
